@@ -32,10 +32,25 @@ function App() {
     <div className="m-5">
 
       {/* Esempio pulsante */}
-      <div className="p-5">
+      <div className="p-5 flex flex-col gap-4">
         <h1 className="text-3xl mb-3 font-bold">Esempio pulsante</h1>
-        <Button>
-          Pulsante
+        <Button variant="primary" icon={<img src="./google_icon.png" alt="icon-plus" />} iconPosition="left">
+          Accedi con google
+        </Button>
+        <Button variant="secondary" icon={<img src="./google_icon.png" alt="icon-plus" />} iconPosition="right">
+          Accedi con google
+        </Button>
+        <Button variant="primary">
+          Cliccami
+        </Button>
+        <Button variant="secondary">
+          Cliccami
+        </Button>
+        <Button variant="primary" size="full">
+          Cliccami
+        </Button>
+        <Button variant="secondary" size="full">
+          Cliccami
         </Button>
       </div>
 

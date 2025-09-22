@@ -19,8 +19,6 @@ const Input = ({ type = 'text', variant = 'primary', className = '', ...props })
     }
 
     return (
-
-
         <input
             type={type}
             className={`${defaultStyle} ${variants[variant]} ${className}`}
