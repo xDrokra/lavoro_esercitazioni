@@ -11,7 +11,7 @@
  * @param {'auto'|'full'} [props.size='auto'] dimensione del pulsante, auto o full width
  * @param {string} [props.className=''] classi aggiuntive per la personalizzazione
  * @param {'left'|'right'} [props.iconPosition='left'] posizione dell'icona in caso ci sia
- * @param {React.ReactNode} [props.icon] posizione dell'icona in caso ci sia
+ * @param {React.ReactNode} [props.icon] icona da mostrare nel pulsante
  * @param {any} [props.props] props HTML del button
  */
 
