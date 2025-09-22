@@ -4,17 +4,18 @@ import Modal from "./components/Modal";
 import Card from "./components/Card"
 import Table from "./components/Table";
 import { useState } from "react";
+import ConfirmModal from "./components/ConfirmModal";
+import LoginModal from "./components/LoginModal";
 
 
 
 
 function App() {
   // Stato modale
+  const [isModalOpenLogin, setIsModalOpenLogin] = useState(false);
+  const [isModalOpenConfirm, setIsModalOpenConfirm] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Funzioni di apertura e chiusura modale
-  const handleOpenModal = () => setIsModalOpen(true);
-  const handleCloseModal = () => setIsModalOpen(false);
 
 
   // Dati tabella di esempio
@@ -107,21 +108,52 @@ function App() {
       <hr></hr>
 
       {/* Esempio Modale */}
-      <div className="p-5">
+      <div className="p-5 flex flex-col gap-4">
         <h1 className="text-3xl mb-3 font-bold">Esempio di Modale</h1>
-        <Button onClick={handleOpenModal}>Apri il Modale</Button>
-        <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-          <h2 className="text-xl font-bold mb-4">Modale</h2>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-          </p>
-          <Button onClick={handleCloseModal} className="mt-5">Chiudi</Button>
+        <Button onClick={() => setIsModalOpen(true)}>Apri il Modale</Button>
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          title="Titolo Modale"
+          bottom={
+            <Button onClick={() => setIsModalOpen(false)}
+              className="w-full">
+              Chiudi
+            </Button>}>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. dasdasdasdasda dasdadasd</p>
         </Modal>
+
+
+        <Button onClick={() => setIsModalOpenConfirm(true)}>Apri il Modale di conferma</Button>
+        <ConfirmModal
+          isOpen={isModalOpenConfirm}
+          onClose={() => setIsModalOpenConfirm(false)}
+          onConfirm={() => setIsModalOpenConfirm(false)}
+          message="Sei sicuro di voler procedere?"
+        />
+
+        <Button onClick={() => setIsModalOpenLogin(true)}>Apri il Modale di Login</Button>
+        <LoginModal
+          isOpen={isModalOpenLogin}
+          onClose={() => setIsModalOpenLogin(false)}
+          onLogin={(email, password) => {
+            return new Promise((resolve, reject) => {
+              setTimeout(() => {
+                if (email === 'test@example.com' && password === 'password') {
+                  resolve();
+                } else {
+                  reject();
+                }
+              }, 1000);
+            });
+          }}
+        />
       </div>
       <hr></hr>
 
       {/* Esempio tabella */}
       <div className="p-5">
+        
         <Table data={data} className={'max-w-lg'}>
 
         </Table>
