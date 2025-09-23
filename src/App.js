@@ -6,6 +6,8 @@ import Table from "./components/Table";
 import { useState } from "react";
 import ConfirmModal from "./components/ConfirmModal";
 import LoginModal from "./components/LoginModal";
+import OrderTable from "./components/OrderTable";
+import Utenti from "./mocks/Utenti";
 
 
 
@@ -15,21 +17,6 @@ function App() {
   const [isModalOpenLogin, setIsModalOpenLogin] = useState(false);
   const [isModalOpenConfirm, setIsModalOpenConfirm] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-
-
-  // Dati tabella di esempio
-  const data = [
-    {
-      "tipo materiale": "flessibile",
-      "prezzo": "30$"
-    },
-    {
-      "tipo materiale": "rigido",
-      "prezzo": "20$"
-    }
-  ]
-
 
   // Esempi di utilizzo
   return (
@@ -123,7 +110,6 @@ function App() {
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. dasdasdasdasda dasdadasd</p>
         </Modal>
 
-
         <Button onClick={() => setIsModalOpenConfirm(true)}>Apri il Modale di conferma</Button>
         <ConfirmModal
           isOpen={isModalOpenConfirm}
@@ -139,7 +125,7 @@ function App() {
           onLogin={(email, password) => {
             return new Promise((resolve, reject) => {
               setTimeout(() => {
-                if (email === 'test@example.com' && password === 'password') {
+                if (email === 'admin@gmail.com' && password === '12345') {
                   resolve();
                 } else {
                   reject();
@@ -152,11 +138,15 @@ function App() {
       <hr></hr>
 
       {/* Esempio tabella */}
-      <div className="p-5">
-        
-        <Table data={data} className={'max-w-lg'}>
+      <div className="p-5 flex flex-col gap-4">
+        <h1 className="text-3xl font-bold">Esempio Tabella</h1>
 
-        </Table>
+        <Table data={Utenti}
+          title="Utenti"
+          className="min-w-[600px]"
+        />
+
+        <OrderTable title="Ordini Recenti" />
       </div>
 
     </div>
