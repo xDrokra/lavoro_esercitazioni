@@ -8,6 +8,8 @@ import ConfirmModal from "./components/ConfirmModal";
 import LoginModal from "./components/LoginModal";
 import OrderTable from "./components/OrderTable";
 import Utenti from "./mocks/Utenti";
+import Navbar from "./components/Navbar";
+import Links from "./mocks/Links";
 
 
 
@@ -21,6 +23,18 @@ function App() {
   // Esempi di utilizzo
   return (
     <div className="m-5">
+
+      <div className="p-5 flex flex-col gap-4">
+        <h1 className="text-3xl mb-3 font-bold">Esempio di Navbar</h1>
+        <Navbar 
+          title={"Azienda demo"}
+          links={Links}
+          rightContent={ <Input placeholder="cerca" /> }
+          logo={"./react.png"}
+        / >
+
+
+      </div>
 
       {/* Esempio pulsante */}
       <div className="p-5 flex flex-col gap-4">
