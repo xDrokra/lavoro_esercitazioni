@@ -9,47 +9,57 @@
  * @param {Object} props proprita' componente
  * @param {Array<Object>} [props.data=[]] dati della tabella
  * @param {string} [props.className=""] classi aggiuntive per la personalizzazione
+ * @param {string} [props.title=""] titolo della tabella
+ * @param {Array<{key: string, label: string}>} [props.cols] colonne della tabella (se non specificato, usa le chiavi del primo oggetto)
  * @param {any} [props.props] props HTML della tabella
  *
 **/
 
-const Table = ({ data = [], className = '', ...props }) => {
+import Card from "./Card";
+
+const Table = ({ data = [], title = '', cols, className = '', ...props }) => {
     // Se non ci sono dati, non visualizza nulla
     if (!data || data.length === 0) {
         return <p>Nessun dato da visualizzare.</p>;
     }
 
     // Estrazione delle chiavi dal primo oggetto, per usarle come header
-    const headers = Object.keys(data[0]);
+    const headers = cols || Object.keys(data[0]).map(key => ({ key, label: key }));
 
     return (
-        <div className="overflow-x-auto">
-            <table className={`bg-white border border-gray-200 ${className}`} {...props}>
+        <Card className="bg-gray-50 w-fit flex flex-col gap-4 p-6">
+            {title && <h1 className="text-xl font-bold">{title}</h1>}
+            <table className={className} {...props}>
                 <thead>
                     <tr>
                         {headers.map((header, i) => (
                             <th
                                 key={i}
-                                className="px-6 py-3 border-b-2  bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase "
+                                className="px-6 py-3 border-b-2 text-left text-xs font-semibold text-gray-400 uppercase "
                             >
-                                {header}
+                                {header.label}
                             </th>
                         ))}
                     </tr>
                 </thead>
                 <tbody>
                     {data.map((item, rowI) => (
-                        <tr key={rowI} className="border-b border-gray-200 hover:bg-gray-50">
+                        <tr key={rowI} className="hover:bg-gray-50 transition-colors duration-200">
                             {headers.map((header, colI) => (
                                 <td key={colI} className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {item[header]}
+                                    {item[header.key]}
                                 </td>
                             ))}
                         </tr>
                     ))}
                 </tbody>
             </table>
-        </div>
+            <div className="text-center mt-4">
+                <a href="/table" className="text-purple-600 hover:underline font-semibold text-sm">
+                    Visualizza tutti
+                </a>
+            </div>
+        </Card>
     );
 };
 
