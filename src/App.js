@@ -10,6 +10,7 @@ import OrderTable from "./components/OrderTable";
 import Utenti from "./mocks/Utenti";
 import Navbar from "./components/Navbar";
 import Links from "./mocks/Links";
+import Footer from "./components/Footer";
 
 
 
@@ -32,8 +33,15 @@ function App() {
           rightContent={ <Input placeholder="cerca" /> }
           logo={"./react.png"}
         / >
+      </div>
 
-
+      <div className="p-5 flex flex-col gap-4">
+        <h1 className="text-3xl mb-3 font-bold">Esempio di Footer</h1>
+        <Footer 
+          title={"Azienda demo"}
+          logo={"./react.png"}
+          rightContent={ <Input placeholder="cerca" /> }
+        / >
       </div>
 
       {/* Esempio pulsante */}
