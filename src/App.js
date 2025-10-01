@@ -11,6 +11,7 @@ import Utenti from "./mocks/Utenti";
 import Navbar from "./components/Navbar";
 import Links from "./mocks/Links";
 import Footer from "./components/Footer";
+import SideBar from "./components/SideBar";
 
 
 
@@ -25,6 +26,7 @@ function App() {
   return (
     <div className="m-5">
 
+      {/* Esempio di Navbar */}
       <div className="p-5 flex flex-col gap-4">
         <h1 className="text-3xl mb-3 font-bold">Esempio di Navbar</h1>
         <Navbar 
@@ -35,6 +37,21 @@ function App() {
         / >
       </div>
 
+      <hr></hr>
+
+
+      {/* Esempio di SideBar */}
+      <div className="p-5 flex flex-col gap-4">
+        <h1 className="text-3xl mb-3 font-bold">Esempio di SideBar</h1>
+        <SideBar 
+          links={Links}
+        />
+      </div>
+
+      <hr></hr>
+
+
+      {/* Esempio di Footer */}
       <div className="p-5 flex flex-col gap-4">
         <h1 className="text-3xl mb-3 font-bold">Esempio di Footer</h1>
         <Footer 
@@ -43,6 +60,9 @@ function App() {
           rightContent={ <Input placeholder="cerca" /> }
         / >
       </div>
+
+      <hr></hr>
+
 
       {/* Esempio pulsante */}
       <div className="p-5 flex flex-col gap-4">
