@@ -48,7 +48,7 @@ const OrderTable = ({ title }) => {
 
   return (
 
-    <div>
+    <div> 
       <div className="flex items-center gap-4 mt-4">
         <h1 className="text-xl font-bold">{title}</h1>
         <span className="border-2 border-green-400 text-xs font-semibold w-6 h-6 rounded-full flex items-center justify-center">
@@ -61,7 +61,6 @@ const OrderTable = ({ title }) => {
         className="min-w-[600px]"
       >
       </Table>
-
 
     </div>
   )

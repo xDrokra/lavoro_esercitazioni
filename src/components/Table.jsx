@@ -27,9 +27,9 @@ const Table = ({ data = [], title = '', cols, className = '', ...props }) => {
     const headers = cols || Object.keys(data[0]).map(key => ({ key, label: key }));
 
     return (
-        <Card className="bg-gray-50 w-fit flex flex-col gap-4 p-6">
+        <Card className="bg-gray-50 md:w-fit w-full flex flex-col gap-4 p-6">
             {title && <h1 className="text-xl font-bold">{title}</h1>}
-            <table className={className} {...props}>
+            <table className={`hidden md:table ${className}`} {...props}>
                 <thead>
                     <tr>
                         {headers.map((header, i) => (
@@ -59,6 +59,20 @@ const Table = ({ data = [], title = '', cols, className = '', ...props }) => {
                     Visualizza tutti
                 </a>
             </div>
+
+            <div className="block md:hidden space-y-4 ">
+                {data.map((item, i) => (
+                    <div key={i} className="border rounded-lg p-4 bg-white shadow-sm">
+                        {headers.map((header, j) => (
+                            <div key={j} className="flex justify-between py-1">
+                                <span className="font-semibold capitalize text-sm">{header.label}</span>
+                                <span className="text-sm">{item[header.key]}</span>
+                            </div>
+                        ))}
+                    </div>
+                ))}
+            </div>
+
         </Card>
     );
 };
