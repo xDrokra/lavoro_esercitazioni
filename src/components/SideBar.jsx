@@ -1,5 +1,17 @@
 import React from 'react'
 
+
+/**
+ * Componente per la Sidebar
+ * 
+ * @component
+ * @param {ReactNode} props.children contenuto della sidebar
+ * @param {Array<string>} [props.links=[]] array di link da visualizzare nella sidebar
+ * @param {string} [props.className=''] classi CSS aggiuntive
+ * @param {Object} props proprieta' del componente
+ * 
+ * 
+ */
 const SideBar = ({children, links = [], className = '', ...props}) => {
   const baseStyle = "w-64 h-full bg-gray-50 p-4 flex flex-col"
 
